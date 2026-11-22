@@ -1,0 +1,30 @@
+---
+layout: default
+title: Research Articles
+permalink: /research/
+excerpt: "Analytical articles on visual semiotics, comparative mythology, and cultural heritage."
+---
+
+<section class="tracks-header" style="padding: 48px 0 24px; border-bottom: 1px solid var(--border-color);">
+    <span class="post-meta">ISIH Archive</span>
+    <h1 style="font-family: var(--font-serif); font-size: 42px; line-height: 1.15; margin: 10px 0 16px;">Research Articles</h1>
+    <p style="font-size: 17px; color: var(--text-muted); max-width: 700px;">
+        In-depth studies decoding visual sign systems, mythological archetypes, and sacred aesthetics across traditions.
+    </p>
+</section>
+
+<div class="articles-grid">
+    {% for post in site.posts %}
+    <article class="article-card" data-category="{{ post.category }}">
+        {% if post.image %}
+            <a href="{{ post.url }}"><img src="{{ post.image }}" alt="{{ post.title }}"></a>
+        {% endif %}
+        <div class="article-body">
+            <span class="post-meta">{{ post.category }}</span>
+            <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+            <p class="article-excerpt">{{ post.excerpt }}</p>
+            <div class="article-tags">{{ post.tags | join: " • " }}</div>
+        </div>
+    </article>
+    {% endfor %}
+</div>

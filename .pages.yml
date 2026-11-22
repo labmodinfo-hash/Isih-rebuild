@@ -1,0 +1,124 @@
+media:
+  input: assets/images
+  output: /assets/images
+
+content:
+  - name: posts
+    label: Research Articles
+    type: collection
+    path: _posts
+    filename: "{year}-{month}-{day}-{primary}.md"
+    fields:
+      - name: layout
+        label: Layout
+        type: string
+        default: post
+        hidden: true
+      - name: title
+        label: Article Title
+        type: string
+        required: true
+      - name: date
+        label: Publication Date
+        type: date
+        required: true
+      - name: category
+        label: Department
+        type: select
+        options:
+          values:
+            - Visual Semiotics
+            - Cross-Cultural & Indian Heritage
+            - Comparative Mythology
+      - name: image
+        label: Cover Image
+        type: image
+      - name: excerpt
+        label: Short Excerpt (Lead)
+        type: text
+      - name: tags
+        label: Tags (press Enter)
+        type: string
+        list: true
+      - name: body
+        label: Article Text
+        type: rich-text
+
+  - name: glossary
+    label: Lexicon / Glossary
+    type: file
+    path: _data/glossary.yml
+    fields:
+      - name: glossary
+        label: List of Terms
+        type: object
+        list: true
+        fields:
+          - name: title
+            label: Term (in English)
+            type: string
+            required: true
+          - name: japanese
+            label: Original Script & Translation
+            type: string
+          - name: category
+            label: Term Category
+            type: select
+            options:
+              values:
+                - Aesthetics & Philosophy
+                - Visual Codes
+                - Folklore & Mythology
+                - Archetypes & Tropes
+          - name: description
+            label: Academic Definition & Examples
+            type: text
+            required: true
+
+  - name: publications
+    label: Academic Publications
+    type: file
+    path: _data/publications.yml
+    fields:
+      - name: publications
+        label: Publications List (add new on top)
+        type: object
+        list: true
+        fields:
+          - name: year
+            label: Year
+            type: number
+            required: true
+          - name: category
+            label: Research Track
+            type: select
+            options:
+              values:
+                - Indian & Cross-Cultural Studies
+                - Japanese Visual Semiotics
+                - Comparative Mythology
+                - Theory & Methodology
+                - Media & Communications
+          - name: title
+            label: Paper Title
+            type: string
+            required: true
+          - name: authors
+            label: Authors (e.g., Rubtsova M.V.)
+            type: string
+            required: true
+          - name: source
+            label: Journal, Year, Issue, Pages
+            type: string
+          - name: doi
+            label: DOI (without https://doi.org)
+            type: string
+          - name: abstract
+            label: Short Abstract
+            type: text
+          - name: pdf
+            label: PDF Path (e.g., /assets/pdf/filename.pdf)
+            type: string
+          - name: cite
+            label: Citation string for "Cite" button
+            type: text

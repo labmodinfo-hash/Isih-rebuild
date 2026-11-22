@@ -1,0 +1,32 @@
+---
+layout: default
+title: ISIH Lexicon
+permalink: /lexicon/
+---
+<div class="page-header">
+  <span class="eyebrow">Reference Apparatus</span>
+  <h1>ISIH Lexicon</h1>
+  <p>Academic dictionary of aesthetic concepts, mythological entities, and visual sign systems across cultural traditions.</p>
+</div>
+
+<div class="filters">
+  <button class="filter-btn active" data-filter="all">All Terms ({{ site.data.glossary.size }})</button>
+  <button class="filter-btn" data-filter="Aesthetics & Philosophy">Aesthetics & Philosophy</button>
+  <button class="filter-btn" data-filter="Visual Codes">Visual Codes</button>
+  <button class="filter-btn" data-filter="Folklore & Mythology">Folklore & Mythology</button>
+  <button class="filter-btn" data-filter="Archetypes & Tropes">Archetypes & Tropes</button>
+</div>
+
+<div class="glossary-grid">
+  {% assign sorted_terms = site.data.glossary | sort: 'title' %}
+  {% for item in sorted_terms %}
+  <div class="term-card" data-category="{{ item.category }}">
+    <span class="term-category">{{ item.category }}</span>
+    <h2>{{ item.title }}</h2>
+    {% if item.japanese %}
+    <p class="term-original">{{ item.japanese }}</p>
+    {% endif %}
+    <p class="term-desc">{{ item.description }}</p>
+  </div>
+  {% endfor %}
+</div>
